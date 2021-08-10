@@ -20,7 +20,7 @@ const { DATABASE_HOST_URL, DATABASE_USER_KEY } = process.env
 
 const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', 8)
 
-async function createJob ({ jobData, user }) {
+async function createJob({ jobData, user }) {
   const {
     runAt,
     runNow,
@@ -67,14 +67,14 @@ async function createJob ({ jobData, user }) {
       user,
       autoSquareOffProps: squareOffTime
         ? {
-            time: squareOffTime,
-            deletePendingOrders: exitStrategy !== EXIT_STRATEGIES.MULTI_LEG_PREMIUM_THRESHOLD
-          }
+          time: squareOffTime,
+          deletePendingOrders: exitStrategy !== EXIT_STRATEGIES.MULTI_LEG_PREMIUM_THRESHOLD
+        }
         : null,
       expiresAt: expireIfUnsuccessfulInMins
         ? dayjs(runNow ? new Date() : runAt)
-            .add(expireIfUnsuccessfulInMins, 'minutes')
-            .format()
+          .add(expireIfUnsuccessfulInMins, 'minutes')
+          .format()
         : null
     },
     {
@@ -85,7 +85,7 @@ async function createJob ({ jobData, user }) {
   return qRes
 }
 
-async function deleteJob (id) {
+async function deleteJob(id) {
   try {
     if (id.includes('repeat')) {
       await tradingQueue.removeRepeatableByKey(id)
@@ -162,6 +162,7 @@ export default withSession(async (req, res) => {
   }
 
   if (req.method === 'DELETE') {
+    console.log("delete request recieved for: ", req.body._id)
     try {
       const { data } = await axios(`${endpoint}/${req.body._id}`)
       if (data.queue.id) {

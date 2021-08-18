@@ -58,9 +58,9 @@ async function orderUpdate (trade, isTestTrade = false) {
     const kc =
       subscriberApiKey && subscriberAccessToken
         ? new KiteConnect({
-            api_key: subscriberApiKey,
-            access_token: subscriberAccessToken
-          })
+          api_key: subscriberApiKey,
+          access_token: subscriberAccessToken
+        })
         : null
 
     if (!kc) {
@@ -118,7 +118,7 @@ export default withSession(async (req, res) => {
   })
 
   if (req.body?.test_trade) {
-    orderUpdate(testPayload, true)
+    orderUpdate(testPayload, true)// eslint-disable-line
   }
 
   res.json({ mirrorUrl: SIGNALX_MIRROR_URL, userType: SIGNALX_MIRROR_USER_TYPE })

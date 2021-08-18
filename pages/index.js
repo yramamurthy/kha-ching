@@ -1,18 +1,13 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
-import Head from 'next/head'
-
-import Footer from '../components/Footer'
+import useUser from '../lib/useUser'
 import styles from '../styles/Home.module.css'
 
 export default function Home () {
+  useUser({ redirectTo: '/dashboard', redirectIfFound: true })
+
   return (
     <div className={styles.container}>
-      <Head>
-        <title>SignalX</title>
-        <link rel='icon' href='/favicon.png' />
-      </Head>
-
       <main className={styles.main}>
+        {/* eslint-disable */}
         <img src='/logo.png' width='300' alt='SignalX' />
 
         <p className={styles.description}>

@@ -25,7 +25,7 @@ Once you've gone through the Notion doc above, come back here for instructions t
 
 Now, click the button to deploy the application on DigitalOcean's (DO) apps platform.
 
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/aakashlpin/kha-ching/tree/master&refcode=d9db955b428e)
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/yramamurthy/kha-ching/tree/master&refcode=d9db955b428e)
 
 ## Environment variables
 

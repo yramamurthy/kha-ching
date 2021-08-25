@@ -10,5 +10,8 @@ module.exports = withPWA({
     disable: !prod,
     dest: 'public',
     runtimeCaching
+  },
+  typescript: {
+    ignoreBuildErrors: true
   }
 })

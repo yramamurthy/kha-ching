@@ -511,7 +511,7 @@ export const getTradingSymbolsByOptionPrice = async ({
       instrumentType
     }) as TradingSymbolInterface
 
-    return `${kite.EXCHANGE_NFO as string}:${tradingsymbol}`
+    return `${kite.EXCHANGE_NFO}:${tradingsymbol}`
   })
 
   const {

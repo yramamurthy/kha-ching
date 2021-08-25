@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import useUser from '../lib/useUser'
 import React from 'react'

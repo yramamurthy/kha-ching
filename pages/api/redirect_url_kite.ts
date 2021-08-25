@@ -19,10 +19,10 @@ const kc = new KiteConnect({
 })
 
 export default withSession(async (req, res) => {
-  const { request_token: requestToken, user_id: userId, password: password, pin: pin } = req.query
+  const { request_token: requestToken, user_id: userId, password, pin } = req.query
 
   if (!requestToken || userId !== kiteUser || pin !== kitePIN) {
-    return res.status(401).send(`<body><center><h3>Unauthorized.</h3><a href='/'>Goto homepage</a></center></body>`)
+    return res.status(401).send('<body><center><h3>Unauthorized.</h3><a href=\'/\'>Goto homepage</a></center></body>')
   }
 
   try {

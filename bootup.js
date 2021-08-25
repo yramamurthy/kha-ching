@@ -10,7 +10,7 @@ const options = {
 setTimeout(() => {
   const request = http.request(options, (res) => {
     console.log(`STATUS: ${res.statusCode}`)
-    if (res.statusCode == 200) {
+    if (res.statusCode === 200) {
       process.exit(0)
     } else {
       process.exit(1)
@@ -18,7 +18,7 @@ setTimeout(() => {
   })
 
   request.on('error', function (err) {
-    console.log('ERROR')
+    console.log(`ERROR - ${err}`)
     process.exit(1)
   })
 

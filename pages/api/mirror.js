@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { KiteConnect } from 'kiteconnect'
+import { KiteConnect } from '../../lib/kiteconnect'
 
 import withSession from '../../lib/session'
 import { useKiteTicker } from '../../lib/socket/ticker'

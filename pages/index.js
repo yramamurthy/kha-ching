@@ -11,6 +11,7 @@ export default function Home () {
         <img src='/logo.png' width='300' alt='SignalX' />
 
         <p className={styles.description}>
+          Welcome to the algo trading world!<br></br>
           <a href='/api/login'>Continue with Kite</a>
         </p>
       </main>

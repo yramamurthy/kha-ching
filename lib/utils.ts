@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import csv from 'csvtojson'
 import dayjs, { Dayjs } from 'dayjs'
-import { KiteConnect } from 'kiteconnect'
+import { KiteConnect } from './kiteconnect'
 import Bluebird, { Promise } from 'bluebird'
 import { allSettled, allSettledInterface } from './es6-promise'
 

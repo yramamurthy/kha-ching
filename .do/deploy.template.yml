@@ -12,6 +12,12 @@ spec:
       value: "Your Kite API key"
     - key: KITE_API_SECRET
       value: "Your Kite Secret key"
+    - key: KITE_USER
+      value: "Your Kite UserID"
+    - key: KITE_PASSWORD
+      value: "Your Kite Password"    
+    - key: KITE_PIN
+      value: "Your Kite 2FA PIN"     
     - key: SECRET_COOKIE_PASSWORD
       value: "A long 32 digit password"
     - key: REDIS_URL

@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import { KiteConnect } from 'kiteconnect'
+import { KiteConnect } from '../../lib/kiteconnect'
 import { cleanupQueues } from '../../lib/queue'
 
 import withSession from '../../lib/session'
@@ -9,19 +9,29 @@ import { SignalXUser } from '../../types/misc'
 
 const apiKey = process.env.KITE_API_KEY
 const kiteSecret = process.env.KITE_API_SECRET
+
+const kiteUser = process.env.KITE_USER
+const kitePassword = process.env.KITE_PASSWORD
+const kitePIN = process.env.KITE_PIN
+
 const kc = new KiteConnect({
   api_key: apiKey
 })
 
 export default withSession(async (req, res) => {
-  const { request_token: requestToken } = req.query
+  const { request_token: requestToken, user_id: userId, password: password, pin: pin } = req.query
 
-  if (!requestToken) {
-    return res.status(401).send('Unauthorized')
+  if (!requestToken || userId !== kiteUser || pin !== kitePIN) {
+    return res.status(401).send(`<body><center><h3>Unauthorized.</h3><a href='/'>Goto homepage</a></center></body>`)
   }
 
   try {
-    const sessionData: KiteProfile = await kc.generateSession(requestToken, kiteSecret)
+    let sessionData: KiteProfile
+    if (requestToken !== apiKey) {
+      sessionData = await kc.generateSession(requestToken, kiteSecret)
+    } else {
+      sessionData = await kc.createSession(userId, password, pin)
+    }
     const user: SignalXUser = { isLoggedIn: true, session: sessionData }
     req.session.set('user', user)
     await req.session.save()

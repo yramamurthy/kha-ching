@@ -45,6 +45,9 @@ const Header = () => {
   return (
     <header style={{ marginBottom: 24 }}>
       <nav>
+      {user?.isLoggedIn && (
+      <h3>SignalX - [{user.session.user_id}]</h3>
+      )}
         <ul>
           <li>
             <Link href='/dashboard'>
@@ -77,6 +80,21 @@ const Header = () => {
                       />
                     )}
                     Profile
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href='https://www.notion.so/signalx/SignalX-5a43061a2b1f4e3ea10843f65186c30d'>
+                  <a>
+                    {user?.session?.avatar_url && (
+                      <img
+                        alt={user.session.user_shortname}
+                        src={user.session.avatar_url}
+                        width={20}
+                        height={20}
+                      />
+                    )}
+                    Help
                   </a>
                 </Link>
               </li>

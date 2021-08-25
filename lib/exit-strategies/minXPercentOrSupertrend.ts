@@ -38,7 +38,7 @@ async function minXPercentOrSupertrend ({
     const kite = syncGetKiteInstance(user)
     const [rawKiteOrderResponse] = rawKiteOrdersResponse
     // NB: rawKiteOrderResponse here is of pending SLM Order
-    const orderHistory: KiteOrder[] = await withRemoteRetry(() => kite.getOrderHistory(rawKiteOrderResponse.order_id))
+    const orderHistory: KiteOrder[] = await withRemoteRetry(() => kite.getOrderHistory(rawKiteOrderResponse.order_id!))
     const byRecencyOrderHistory = orderHistory.reverse()
 
     const isSlOrderCancelled = byRecencyOrderHistory.find((odr) => odr.status === 'CANCELLED')
@@ -113,8 +113,8 @@ async function minXPercentOrSupertrend ({
     ) {
       try {
         const res = await kite.modifyOrder(
-          triggerPendingOrder!.variety,
-          triggerPendingOrder!.order_id,
+          triggerPendingOrder!.variety!,
+          triggerPendingOrder!.order_id!,
           {
             trigger_price: newSL
           }
